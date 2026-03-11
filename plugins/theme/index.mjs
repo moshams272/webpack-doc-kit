@@ -86,10 +86,20 @@ export class DocKitThemeContext extends MarkdownThemeContext {
     memberTitle: (model) => {
       const prefix = resolveMemberPrefix(model);
       const params = model.signatures?.[0]?.parameters ?? null;
-      const name = params
-        ? // TODO: If params optional, wrap in `[]`
-          `\`${model.name}(${params.map((p) => p.name).join(", ")})\``
-        : `\`${model.name}\``;
+      let name;
+      if (params) {
+        const paramsString = params.map((param, index) => {
+          const isOptional = param.flags?.isOptional;
+          if (isOptional) {
+            return index === 0 ? `[${param.name}]` : `[, ${param.name}]`;
+          }
+          return index === 0 ? param.name : `, ${param.name}`;
+        }).join("");
+        name = `\`${model.name}(${paramsString})\``;
+      } else {
+        name = `\`${model.name}\``;
+      }
+      
       return prefix ? `${prefix}: ${name}` : name;
     },
   };
