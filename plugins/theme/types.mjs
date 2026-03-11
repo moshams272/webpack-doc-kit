@@ -5,8 +5,16 @@ const resolve = (type) => {
 
   switch (type.type) {
     case "intrinsic":
-    case "reference":
       return type.name;
+
+    case "reference": {
+      let name = type.name;
+      if (type.typeArguments && type.typeArguments.length > 0) {
+        const args = type.typeArguments.map(resolve).join(", ");
+        name += `<${args}>`; 
+      }
+      return name;
+    }
 
     case "literal":
       return typeof type.value === "string"
