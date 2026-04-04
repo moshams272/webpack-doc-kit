@@ -2087,13 +2087,13 @@ Apply the plugin
 * `weak` {boolean}
 * `EXPORTS_OBJECT_REFERENCED` {string[][]}
 * `NO_EXPORTS_REFERENCED` {string[][]}
-* `TRANSITIVE` {TRANSITIVE}
+* `TRANSITIVE` {symbol}
 
 ### Methods
 
 #### `couldAffectReferencingModule()`
 
-* Returns: {boolean|TRANSITIVE}
+* Returns: {boolean|symbol}
 
 #### `createIgnoredModule(context)`
 
@@ -6649,6 +6649,7 @@ Specify options for each parser.
 * `filename` {string}
 * `hash` {string}
 * `hashWithLength` {object}
+* `local` {string}
 * `module` {Module|ModulePathData}
 * `noChunkHash` {boolean}
 * `prepareId` {object}
