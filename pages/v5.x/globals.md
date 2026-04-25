@@ -9,6 +9,7 @@
 - [css](webpack/namespaces/css.md)
 - [debug](webpack/namespaces/debug.md)
 - [dependencies](webpack/namespaces/dependencies.md)
+- [dll](webpack/namespaces/dll.md)
 - [electron](webpack/namespaces/electron.md)
 - [esm](webpack/namespaces/esm.md)
 - [experiments](webpack/namespaces/experiments/index.md)

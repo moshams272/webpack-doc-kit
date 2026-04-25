@@ -214,6 +214,7 @@
   "dependencies.NullDependency.setLoc": "webpack/namespaces/dependencies.md#setloc",
   "dependencies.NullDependency.updateHash": "webpack/namespaces/dependencies.md#updatehash",
   "dependencies.NullDependency.isLowPriorityDependency": "webpack/namespaces/dependencies.md#islowprioritydependency",
+  "dll": "webpack/namespaces/dll.md",
   "electron": "webpack/namespaces/electron.md",
   "electron.ElectronTargetPlugin": "webpack/namespaces/electron.md#electrontargetplugin",
   "electron.ElectronTargetPlugin.constructor": "webpack/namespaces/electron.md#constructor",
