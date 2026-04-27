@@ -8374,7 +8374,7 @@ Normalized webpack options object.
 * `mode` {"development"|"none"|"production"} Enable production optimizations or development hints.
 * `module` {ModuleOptionsNormalized} Options affecting the normal modules (`NormalModuleFactory`).
 * `name` {string} Name of the configuration. Used when loading multiple configurations.
-* `node` {Node} Include polyfills or mocks for various node stuff.
+* `node` {NodeWebpackOptions} Include polyfills or mocks for various node stuff.
 * `optimization` {OptimizationNormalized} Enables/Disables integrated optimizations.
 * `output` {OutputNormalized} Normalized options affecting the output of the compilation. `output` options tell webpack how to write the compiled files to disk.
 * `parallelism` {number} The number of parallel processed modules in the compilation.
