@@ -115,7 +115,7 @@ Adds the provided dependency to the dependencies block.
 
 #### `addError(error)`
 
-* `error` {WebpackError}
+* `error` {Error}
 * Returns: {void}
 
 Adds the provided error to the module.
@@ -129,7 +129,7 @@ Adds presentational dependency.
 
 #### `addWarning(warning)`
 
-* `warning` {WebpackError}
+* `warning` {Error}
 * Returns: {void}
 
 Adds the provided warning to the module.
@@ -215,7 +215,9 @@ Returns the reason this module cannot be concatenated, when one exists.
 
 #### `getErrors()`
 
-* Returns: {Iterable<WebpackError, any, any>}
+* Returns: {Error[]}
+
+Returns list of errors if any.
 
 Returns list of errors if any.
 
@@ -287,7 +289,9 @@ This data will be passed to restoreFromUnsafeCache later.
 
 #### `getWarnings()`
 
-* Returns: {Iterable<WebpackError, any, any>}
+* Returns: {Error[]}
+
+Returns list of warnings if any.
 
 Returns list of warnings if any.
 

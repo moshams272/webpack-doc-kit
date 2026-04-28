@@ -1067,6 +1067,7 @@
   "RuntimeGlobals.returnExportsFromRuntime": "webpack/namespaces/RuntimeGlobals.md#returnexportsfromruntime",
   "RuntimeGlobals.runtimeId": "webpack/namespaces/RuntimeGlobals.md#runtimeid",
   "RuntimeGlobals.scriptNonce": "webpack/namespaces/RuntimeGlobals.md#scriptnonce",
+  "RuntimeGlobals.setAnonymousDefaultName": "webpack/namespaces/RuntimeGlobals.md#setanonymousdefaultname",
   "RuntimeGlobals.shareScopeMap": "webpack/namespaces/RuntimeGlobals.md#sharescopemap",
   "RuntimeGlobals.startup": "webpack/namespaces/RuntimeGlobals.md#startup",
   "RuntimeGlobals.startupEntrypoint": "webpack/namespaces/RuntimeGlobals.md#startupentrypoint",

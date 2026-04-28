@@ -432,6 +432,12 @@
 
 ***
 
+## `setAnonymousDefaultName`
+
+> **setAnonymousDefaultName**: {"__webpack_require__.dn"}
+
+***
+
 ## `shareScopeMap`
 
 > **shareScopeMap**: {"__webpack_require__.S"}
