@@ -225,8 +225,6 @@ Returns the reason this module cannot be concatenated, when one exists.
 
 Returns list of errors if any.
 
-Returns list of errors if any.
-
 #### `getExportsType(moduleGraph[, strict])`
 
 * `moduleGraph` {ModuleGraph}
@@ -296,8 +294,6 @@ This data will be passed to restoreFromUnsafeCache later.
 #### `getWarnings()`
 
 * Returns: {Error[]}
-
-Returns list of warnings if any.
 
 Returns list of warnings if any.
 
@@ -720,8 +716,6 @@ Returns the reason this module cannot be concatenated, when one exists.
 
 Returns list of errors if any.
 
-Returns list of errors if any.
-
 #### `getExportsType(moduleGraph[, strict])`
 
 * `moduleGraph` {ModuleGraph}
@@ -791,8 +785,6 @@ This data will be passed to restoreFromUnsafeCache later.
 #### `getWarnings()`
 
 * Returns: {Error[]}
-
-Returns list of warnings if any.
 
 Returns list of warnings if any.
 
