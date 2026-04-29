@@ -54,6 +54,12 @@
 
 ***
 
+## `compileWasm`
+
+> **compileWasm**: {"__webpack_require__.vs"}
+
+***
+
 ## `createFakeNamespaceObject`
 
 > **createFakeNamespaceObject**: {"__webpack_require__.t"}
@@ -423,6 +429,12 @@
 ## `scriptNonce`
 
 > **scriptNonce**: {"__webpack_require__.nc"}
+
+***
+
+## `setAnonymousDefaultName`
+
+> **setAnonymousDefaultName**: {"__webpack_require__.dn"}
 
 ***
 
