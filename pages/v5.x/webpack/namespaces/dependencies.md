@@ -36,6 +36,12 @@ Creates an instance of ConstDependency.
 
 ### Methods
 
+#### `canConcatenate()`
+
+* Returns: {boolean}
+
+Returns true if this dependency can be concatenated
+
 #### `couldAffectReferencingModule()`
 
 * Returns: {boolean|symbol}
@@ -151,6 +157,13 @@ Updates loc using the provided start line.
 
 Updates the hash with the data contributed by this instance.
 
+#### Static method: `canConcatenate(dependency)`
+
+* `dependency` {Dependency}
+* Returns: {boolean}
+
+Returns true if the dependency can be concatenated (scope hoisting).
+
 #### Static method: `isLowPriorityDependency(dependency)`
 
 * `dependency` {Dependency}
@@ -201,6 +214,12 @@ Creates an instance of HarmonyImportDependency.
 * `TRANSITIVE` {symbol}
 
 ### Methods
+
+#### `canConcatenate()`
+
+* Returns: {boolean}
+
+Returns true if this dependency can be concatenated
 
 #### `couldAffectReferencingModule()`
 
@@ -348,6 +367,13 @@ Updates loc using the provided start line.
 
 Updates the hash with the data contributed by this instance.
 
+#### Static method: `canConcatenate(dependency)`
+
+* `dependency` {Dependency}
+* Returns: {boolean}
+
+Returns true if the dependency can be concatenated (scope hoisting).
+
 #### Static method: `isLowPriorityDependency(dependency)`
 
 * `dependency` {Dependency}
@@ -397,6 +423,12 @@ Creates an instance of ModuleDependency.
 
 ### Methods
 
+#### `canConcatenate()`
+
+* Returns: {boolean}
+
+Returns true if this dependency can be concatenated
+
 #### `couldAffectReferencingModule()`
 
 * Returns: {boolean|symbol}
@@ -511,6 +543,13 @@ Updates loc using the provided start line.
 * Returns: {void}
 
 Updates the hash with the data contributed by this instance.
+
+#### Static method: `canConcatenate(dependency)`
+
+* `dependency` {Dependency}
+* Returns: {boolean}
+
+Returns true if the dependency can be concatenated (scope hoisting).
 
 #### Static method: `isLowPriorityDependency(dependency)`
 
@@ -553,6 +592,12 @@ Returns true if the dependency is a low priority dependency.
 
 ### Methods
 
+#### `canConcatenate()`
+
+* Returns: {boolean}
+
+Returns true if this dependency can be concatenated
+
 #### `couldAffectReferencingModule()`
 
 * Returns: {boolean|symbol}
@@ -667,6 +712,13 @@ Updates loc using the provided start line.
 * Returns: {void}
 
 Updates the hash with the data contributed by this instance.
+
+#### Static method: `canConcatenate(dependency)`
+
+* `dependency` {Dependency}
+* Returns: {boolean}
+
+Returns true if the dependency can be concatenated (scope hoisting).
 
 #### Static method: `isLowPriorityDependency(dependency)`
 

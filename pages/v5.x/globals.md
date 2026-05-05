@@ -2628,6 +2628,12 @@ Applies the plugin by registering its hooks on the compiler.
 
 ### Methods
 
+#### `canConcatenate()`
+
+* Returns: {boolean}
+
+Returns true if this dependency can be concatenated
+
 #### `couldAffectReferencingModule()`
 
 * Returns: {boolean|symbol}
@@ -2742,6 +2748,13 @@ Updates loc using the provided start line.
 * Returns: {void}
 
 Updates the hash with the data contributed by this instance.
+
+#### Static method: `canConcatenate(dependency)`
+
+* `dependency` {Dependency}
+* Returns: {boolean}
+
+Returns true if the dependency can be concatenated (scope hoisting).
 
 #### Static method: `isLowPriorityDependency(dependency)`
 
@@ -6499,8 +6512,20 @@ Applies the plugin by registering its hooks on the compiler.
 * `fileSystem` {FileSystem}
 * `hooks` {KnownHooks}
 * `options` {ResolveOptionsResolverFactoryObject1}
+* `pathCache` {PathCacheFunctions}
 
 ### Methods
+
+#### `basename(path[, suffix])`
+
+* `path` {string}
+* `suffix` {string}
+* Returns: {string}
+
+#### `dirname(path)`
+
+* `path` {string}
+* Returns: {string}
 
 #### `doResolve(hook, request, message, resolveContext, callback)`
 
@@ -6552,7 +6577,32 @@ Applies the plugin by registering its hooks on the compiler.
 * `identifier` {string}
 * Returns: {ParsedIdentifier}
 
-#### `resolve(context, path, request, resolveContext, callback)`
+#### `resolve(path, request, callback)`
+
+##### Call Signature
+
+* `path` {string}
+* `request` {string}
+* `callback` {object}
+* Returns: {void}
+
+##### Call Signature
+
+* `path` {string}
+* `request` {string}
+* `resolveContext` {ResolveContext}
+* `callback` {object}
+* Returns: {void}
+
+##### Call Signature
+
+* `context` {ContextTypes}
+* `path` {string}
+* `request` {string}
+* `callback` {object}
+* Returns: {void}
+
+##### Call Signature
 
 * `context` {ContextTypes}
 * `path` {string}
@@ -6561,11 +6611,38 @@ Applies the plugin by registering its hooks on the compiler.
 * `callback` {object}
 * Returns: {void}
 
-#### `resolveSync(context, path, request)`
+#### `resolvePromise(path, request[, resolveContext])`
+
+##### Call Signature
+
+* `path` {string}
+* `request` {string}
+* `resolveContext` {ResolveContext}
+* Returns: {Promise<string|false>}
+
+##### Call Signature
 
 * `context` {ContextTypes}
 * `path` {string}
 * `request` {string}
+* `resolveContext` {ResolveContext}
+* Returns: {Promise<string|false>}
+
+#### `resolveSync(path, request[, resolveContext])`
+
+##### Call Signature
+
+* `path` {string}
+* `request` {string}
+* `resolveContext` {ResolveContext}
+* Returns: {string|false}
+
+##### Call Signature
+
+* `context` {ContextTypes}
+* `path` {string}
+* `request` {string}
+* `resolveContext` {ResolveContext}
 * Returns: {string|false}
 
 ***
