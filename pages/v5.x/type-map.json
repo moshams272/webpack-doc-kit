@@ -2961,6 +2961,7 @@
   "ProgressPlugin.options": "globals.md#options",
   "ProgressPlugin.percentBy": "globals.md#percentby",
   "ProgressPlugin.profile": "globals.md#profile",
+  "ProgressPlugin.progressBar": "globals.md#progressbar",
   "ProgressPlugin.showActiveModules": "globals.md#showactivemodules",
   "ProgressPlugin.showDependencies": "globals.md#showdependencies",
   "ProgressPlugin.showEntries": "globals.md#showentries",

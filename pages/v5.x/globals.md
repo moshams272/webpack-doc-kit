@@ -6448,6 +6448,7 @@ Creates an instance of ProgressPlugin.
 * `options` {ProgressPluginOptions}
 * `percentBy` {"entries"|"modules"|"dependencies"}
 * `profile` {boolean}
+* `progressBar` {false|Required<object>}
 * `showActiveModules` {boolean}
 * `showDependencies` {boolean}
 * `showEntries` {boolean}
