@@ -8135,9 +8135,9 @@ Specify options for each parser.
 * `asset/resource` {EmptyParserOptions} No parser options are supported for this module type.
 * `asset/source` {EmptyParserOptions} No parser options are supported for this module type.
 * `css` {CssParserOptions} Parser options for css modules.
-* `css/auto` {CssModuleParserOptions} Parser options for css/module modules.
-* `css/global` {CssModuleParserOptions} Parser options for css/module modules.
-* `css/module` {CssModuleParserOptions} Parser options for css/module modules.
+* `css/auto` {CssAutoOrModuleParserOptions} Parser options for css/auto and css/module modules.
+* `css/global` {CssModuleParserOptions} Parser options for css/global modules.
+* `css/module` {CssAutoOrModuleParserOptions} Parser options for css/auto and css/module modules.
 * `javascript` {JavascriptParserOptions} Parser options for javascript modules.
 * `javascript/auto` {JavascriptParserOptions} Parser options for javascript modules.
 * `javascript/dynamic` {JavascriptParserOptions} Parser options for javascript modules.
