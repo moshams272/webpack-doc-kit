@@ -84,12 +84,6 @@
 
 ***
 
-## `cssMergeStyleSheets`
-
-> **cssMergeStyleSheets**: {"__webpack_require__.mcs"}
-
-***
-
 ## `currentRemoteGetScope`
 
 > **currentRemoteGetScope**: {"__webpack_require__.R"}
