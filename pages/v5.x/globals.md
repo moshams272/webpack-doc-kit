@@ -7938,6 +7938,7 @@ Specify options for each generator.
 * `css/auto` {CssModuleGeneratorOptions} Generator options for css/module modules.
 * `css/global` {CssModuleGeneratorOptions} Generator options for css/module modules.
 * `css/module` {CssModuleGeneratorOptions} Generator options for css/module modules.
+* `html` {HtmlGeneratorOptions} Generator options for html modules.
 * `javascript` {EmptyGeneratorOptions} No generator options are supported for this module type.
 * `javascript/auto` {EmptyGeneratorOptions} No generator options are supported for this module type.
 * `javascript/dynamic` {EmptyGeneratorOptions} No generator options are supported for this module type.

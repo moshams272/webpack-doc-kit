@@ -3368,6 +3368,7 @@
   "GeneratorOptionsByModuleTypeKnown.css/auto": "globals.md#cssauto",
   "GeneratorOptionsByModuleTypeKnown.css/global": "globals.md#cssglobal",
   "GeneratorOptionsByModuleTypeKnown.css/module": "globals.md#cssmodule",
+  "GeneratorOptionsByModuleTypeKnown.html": "globals.md#html",
   "GeneratorOptionsByModuleTypeKnown.javascript": "globals.md#javascript",
   "GeneratorOptionsByModuleTypeKnown.javascript/auto": "globals.md#javascriptauto",
   "GeneratorOptionsByModuleTypeKnown.javascript/dynamic": "globals.md#javascriptdynamic",
