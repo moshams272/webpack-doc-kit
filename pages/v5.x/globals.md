@@ -1382,6 +1382,18 @@ Sorting values are based off of number of chunks in ChunkGroup.
 
 Returns the async dependency blocks that create or reference this group.
 
+#### `getChildOrderOptions(childGroup, chunkGraph)`
+
+* `childGroup` {ChunkGroup}
+* `chunkGraph` {ChunkGraph}
+* Returns: {Record<string, number>}
+
+Aggregates per-block `*Order` options for the blocks that bridge this
+chunk group to the given child chunk group. `*Order` options are tied to
+the originating `import()` call and must not be sourced from the child's
+shared options, otherwise a webpackPrefetch/Preload directive from one
+parent would leak into other parents that share the child by name.
+
 #### `getChildren()`
 
 * Returns: {ChunkGroup[]}
@@ -2003,16 +2015,22 @@ Returns the asset or undefined when not found.
 
 #### `getAssetPath(filename, data)`
 
-* `filename` {TemplatePath}
-* `data` {PathData}
+###### T
+
+`T` *extends* {PathData} = {PathData}
+* `filename` {string|TemplatePathFn<T>}
+* `data` {T}
 * Returns: {string}
 
 Returns interpolated path.
 
 #### `getAssetPathWithInfo(filename, data)`
 
-* `filename` {TemplatePath}
-* `data` {PathData}
+###### T
+
+`T` *extends* {PathData} = {PathData}
+* `filename` {string|TemplatePathFn<T>}
+* `data` {T}
 * Returns: {InterpolatedPathAndAssetInfo}
 
 Gets asset path with info.
@@ -2056,16 +2074,22 @@ Fetches a module from a compilation by its identifier
 
 #### `getPath(filename[, data])`
 
-* `filename` {TemplatePath}
-* `data` {PathData}
+###### T
+
+`T` *extends* {PathData} = {PathData}
+* `filename` {string|TemplatePathFn<T>}
+* `data` {T}
 * Returns: {string}
 
 Returns interpolated path.
 
 #### `getPathWithInfo(filename[, data])`
 
-* `filename` {TemplatePath}
-* `data` {PathData}
+###### T
+
+`T` *extends* {PathData} = {PathData}
+* `filename` {string|TemplatePathFn<T>}
+* `data` {T}
 * Returns: {InterpolatedPathAndAssetInfo}
 
 Gets path with info.
@@ -3056,6 +3080,18 @@ Sorting values are based off of number of chunks in ChunkGroup.
 
 Returns the async dependency blocks that create or reference this group.
 
+#### `getChildOrderOptions(childGroup, chunkGraph)`
+
+* `childGroup` {ChunkGroup}
+* `chunkGraph` {ChunkGraph}
+* Returns: {Record<string, number>}
+
+Aggregates per-block `*Order` options for the blocks that bridge this
+chunk group to the given child chunk group. `*Order` options are tied to
+the originating `import()` call and must not be sourced from the child's
+shared options, otherwise a webpackPrefetch/Preload directive from one
+parent would leak into other parents that share the child by name.
+
 #### `getChildren()`
 
 * Returns: {ChunkGroup[]}
@@ -3810,7 +3846,7 @@ Gets source basic types.
 
 #### `new ExternalsPlugin(type, externals)`
 
-* `type` {"asset"|"module"|"css-import"|"css-url"|"global"|"import"|"commonjs"|"jsonp"|"promise"|"this"|"var"|"assign"|"window"|"self"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"umd"|"umd2"|"system"|"module-import"|"script"|"node-commonjs"|object}
+* `type` {"asset"|"module"|"asset-url"|"css-import"|"global"|"import"|"commonjs"|"jsonp"|"promise"|"this"|"var"|"assign"|"window"|"self"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"umd"|"umd2"|"system"|"module-import"|"script"|"node-commonjs"|"css-url"|object}
 * `externals` {Externals}
 * Returns: {ExternalsPlugin}
 
@@ -3819,7 +3855,7 @@ Creates an instance of ExternalsPlugin.
 ### Properties
 
 * `externals` {Externals}
-* `type` {"asset"|"module"|"css-import"|"css-url"|"global"|"import"|"commonjs"|"jsonp"|"promise"|"this"|"var"|"assign"|"window"|"self"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"umd"|"umd2"|"system"|"module-import"|"script"|"node-commonjs"|object}
+* `type` {"asset"|"module"|"asset-url"|"css-import"|"global"|"import"|"commonjs"|"jsonp"|"promise"|"this"|"var"|"assign"|"window"|"self"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"umd"|"umd2"|"system"|"module-import"|"script"|"node-commonjs"|"css-url"|object}
 
 ### Methods
 
@@ -4445,7 +4481,9 @@ Updates hash with bootstrap.
 
 * `chunk` {Chunk}
 * `outputOptions` {OutputNormalizedWithDefaults}
-* Returns: {TemplatePath}
+* Returns: {ChunkFilenameTemplate}
+
+Gets chunk filename template.
 
 Gets chunk filename template.
 
@@ -5805,7 +5843,7 @@ Applies the plugin by registering its hooks on the compiler.
 
 #### `new NormalModule(__namedParameters)`
 
-* `__namedParameters` {NormalModuleCreateData}
+* `__namedParameters` {NormalModuleCreateDataNormalModuleObject_1<string>}
 * Returns: {NormalModule}
 
 ### Properties
@@ -7166,7 +7204,7 @@ Creates an instance of SourceMapDevToolPlugin.
 * `namespace` {string}
 * `options` {SourceMapDevToolPluginOptions}
 * `sourceMapFilename` {string|false}
-* `sourceMappingURLComment` {string|false|object}
+* `sourceMappingURLComment` {string|false|TemplatePathFn<PathData>}
 
 ### Methods
 
@@ -7824,7 +7862,7 @@ Options object as provided by the user.
 * `extends` {string|string[]} Extend configuration from another configuration (only works when using webpack-cli).
 * `externals` {string|RegExp|ExternalItemObjectKnown|ExternalItemObjectUnknown|object|object|ExternalItem[]} Specify dependencies that shouldn't be resolved by webpack, but should become dependencies of the resulting bundle. The kind of the dependency depends on `output.libraryTarget`.
 * `externalsPresets` {ExternalsPresets} Enable presets of externals for specific targets.
-* `externalsType` {"asset"|"module"|"css-import"|"css-url"|"global"|"import"|"commonjs"|"jsonp"|"promise"|"this"|"var"|"assign"|"window"|"self"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"umd"|"umd2"|"system"|"module-import"|"script"|"node-commonjs"} Specifies the default type of externals ('amd*', 'umd*', 'system' and 'jsonp' depend on output.libraryTarget set to the same value).
+* `externalsType` {"asset"|"module"|"asset-url"|"css-import"|"global"|"import"|"commonjs"|"jsonp"|"promise"|"this"|"var"|"assign"|"window"|"self"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"umd"|"umd2"|"system"|"module-import"|"script"|"node-commonjs"|"css-url"} Specifies the default type of externals ('amd*', 'umd*', 'system' and 'jsonp' depend on output.libraryTarget set to the same value).
 * `ignoreWarnings` {RegExp|object|object[]} Ignore specific warnings.
 * `infrastructureLogging` {InfrastructureLogging} Options for infrastructure level logging.
 * `loader` {Loader} Custom values available in the loader context.
@@ -8251,7 +8289,7 @@ Returns object of arguments.
 * `context` {string}
 * `contextDependencies` {LazySet<string>}
 * `contextInfo` {ModuleFactoryCreateDataContextInfo}
-* `createData` {Partial<NormalModuleCreateData|object>}
+* `createData` {Partial<CreateData>}
 * `dependencies` {ModuleDependency[]}
 * `dependencyType` {string}
 * `fileDependencies` {LazySet<string>}
@@ -8446,7 +8484,7 @@ Normalized webpack options object.
 * `experiments` {ExperimentsNormalized} Enables/Disables experiments (experimental features with relax SemVer compatibility).
 * `externals` {Externals} Specify dependencies that shouldn't be resolved by webpack, but should become dependencies of the resulting bundle. The kind of the dependency depends on `output.libraryTarget`.
 * `externalsPresets` {ExternalsPresets} Enable presets of externals for specific targets.
-* `externalsType` {"asset"|"module"|"css-import"|"css-url"|"global"|"import"|"commonjs"|"jsonp"|"promise"|"this"|"var"|"assign"|"window"|"self"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"umd"|"umd2"|"system"|"module-import"|"script"|"node-commonjs"} Specifies the default type of externals ('amd*', 'umd*', 'system' and 'jsonp' depend on output.libraryTarget set to the same value).
+* `externalsType` {"asset"|"module"|"asset-url"|"css-import"|"global"|"import"|"commonjs"|"jsonp"|"promise"|"this"|"var"|"assign"|"window"|"self"|"commonjs2"|"commonjs-module"|"commonjs-static"|"amd"|"amd-require"|"umd"|"umd2"|"system"|"module-import"|"script"|"node-commonjs"|"css-url"} Specifies the default type of externals ('amd*', 'umd*', 'system' and 'jsonp' depend on output.libraryTarget set to the same value).
 * `ignoreWarnings` {object[]} Ignore specific warnings.
 * `infrastructureLogging` {InfrastructureLogging} Options for infrastructure level logging.
 * `loader` {Loader} Custom values available in the loader context.
@@ -8630,6 +8668,27 @@ Plugin instance.
 ## Type: `ParserState`
 
 > **ParserState** = {ParserStateBase|Record<string, any>}
+
+***
+
+## Type: `PathDataChunk`
+
+> **PathDataChunk** = {PathData|object}
+
+### Type Declaration
+
+* `chunk` {Chunk|ChunkPathData}
+
+***
+
+## Type: `PathDataModule`
+
+> **PathDataModule** = {PathData|object}
+
+### Type Declaration
+
+* `chunkGraph` {ChunkGraph}
+* `module` {Module|ModulePathData}
 
 ***
 
@@ -8843,7 +8902,7 @@ Plugin instance.
 
 ## Type: `TemplatePath`
 
-> **TemplatePath** = {string|object}
+> **TemplatePath** = {string|TemplatePathFn<PathData>}
 
 ***
 

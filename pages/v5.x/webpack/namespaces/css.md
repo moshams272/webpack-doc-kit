@@ -55,7 +55,9 @@ Returns true, when the chunk has css.
 
 * `chunk` {Chunk}
 * `outputOptions` {OutputNormalizedWithDefaults}
-* Returns: {TemplatePath}
+* Returns: {ChunkFilenameTemplate}
+
+Gets chunk filename template.
 
 Gets chunk filename template.
 
