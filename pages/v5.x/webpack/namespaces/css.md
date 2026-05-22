@@ -59,8 +59,6 @@ Returns true, when the chunk has css.
 
 Gets chunk filename template.
 
-Gets chunk filename template.
-
 #### Static method: `getCompilationHooks(compilation)`
 
 * `compilation` {Compilation}

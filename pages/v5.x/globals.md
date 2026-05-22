@@ -4485,8 +4485,6 @@ Updates hash with bootstrap.
 
 Gets chunk filename template.
 
-Gets chunk filename template.
-
 #### Static method: `getCompilationHooks(compilation)`
 
 * `compilation` {Compilation}
