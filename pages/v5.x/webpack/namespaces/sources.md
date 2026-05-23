@@ -24,6 +24,22 @@
 
 * Returns: {Buffer<ArrayBufferLike>[]}
 
+#### `clearCache([options][, visited])`
+
+* `options` {ClearCacheOptions}
+* `visited` {WeakSet<Source>}
+* Returns: {void}
+
+Release cached data held by this source. clearCache is a memory
+hint: it never affects correctness or output, only how expensive
+the next read is. Subclasses override; the base is a no-op so
+every Source supports the call. Composite sources always recurse
+into wrapped sources. When the same child is reachable via several
+parents (e.g. modules shared across webpack chunks), pass a shared
+`visited` WeakSet so each subtree is walked at most once.
+Not safe to call concurrently with source/map/sourceAndMap/
+streamChunks/updateHash on the same instance.
+
 #### `getCachedData()`
 
 * Returns: {CachedData}
@@ -92,6 +108,22 @@
 
 * Returns: {Buffer<ArrayBufferLike>[]}
 
+#### `clearCache([options][, visited])`
+
+* `options` {ClearCacheOptions}
+* `visited` {WeakSet<Source>}
+* Returns: {void}
+
+Release cached data held by this source. clearCache is a memory
+hint: it never affects correctness or output, only how expensive
+the next read is. Subclasses override; the base is a no-op so
+every Source supports the call. Composite sources always recurse
+into wrapped sources. When the same child is reachable via several
+parents (e.g. modules shared across webpack chunks), pass a shared
+`visited` WeakSet so each subtree is walked at most once.
+Not safe to call concurrently with source/map/sourceAndMap/
+streamChunks/updateHash on the same instance.
+
 #### `map([options])`
 
 * `options` {MapOptions}
@@ -155,6 +187,22 @@
 
 * Returns: {Buffer<ArrayBufferLike>[]}
 
+#### `clearCache([options][, visited])`
+
+* `options` {ClearCacheOptions}
+* `visited` {WeakSet<Source>}
+* Returns: {void}
+
+Release cached data held by this source. clearCache is a memory
+hint: it never affects correctness or output, only how expensive
+the next read is. Subclasses override; the base is a no-op so
+every Source supports the call. Composite sources always recurse
+into wrapped sources. When the same child is reachable via several
+parents (e.g. modules shared across webpack chunks), pass a shared
+`visited` WeakSet so each subtree is walked at most once.
+Not safe to call concurrently with source/map/sourceAndMap/
+streamChunks/updateHash on the same instance.
+
 #### `getChildren()`
 
 * Returns: {Source[]}
@@ -216,6 +264,22 @@
 
 * Returns: {Buffer<ArrayBufferLike>[]}
 
+#### `clearCache([options][, visited])`
+
+* `options` {ClearCacheOptions}
+* `visited` {WeakSet<Source>}
+* Returns: {void}
+
+Release cached data held by this source. clearCache is a memory
+hint: it never affects correctness or output, only how expensive
+the next read is. Subclasses override; the base is a no-op so
+every Source supports the call. Composite sources always recurse
+into wrapped sources. When the same child is reachable via several
+parents (e.g. modules shared across webpack chunks), pass a shared
+`visited` WeakSet so each subtree is walked at most once.
+Not safe to call concurrently with source/map/sourceAndMap/
+streamChunks/updateHash on the same instance.
+
 #### `getName()`
 
 * Returns: {string}
@@ -276,6 +340,22 @@
 #### `buffers()`
 
 * Returns: {Buffer<ArrayBufferLike>[]}
+
+#### `clearCache([options][, visited])`
+
+* `options` {ClearCacheOptions}
+* `visited` {WeakSet<Source>}
+* Returns: {void}
+
+Release cached data held by this source. clearCache is a memory
+hint: it never affects correctness or output, only how expensive
+the next read is. Subclasses override; the base is a no-op so
+every Source supports the call. Composite sources always recurse
+into wrapped sources. When the same child is reachable via several
+parents (e.g. modules shared across webpack chunks), pass a shared
+`visited` WeakSet so each subtree is walked at most once.
+Not safe to call concurrently with source/map/sourceAndMap/
+streamChunks/updateHash on the same instance.
 
 #### `getPrefix()`
 
@@ -342,6 +422,22 @@
 
 * Returns: {Buffer<ArrayBufferLike>[]}
 
+#### `clearCache([options][, visited])`
+
+* `options` {ClearCacheOptions}
+* `visited` {WeakSet<Source>}
+* Returns: {void}
+
+Release cached data held by this source. clearCache is a memory
+hint: it never affects correctness or output, only how expensive
+the next read is. Subclasses override; the base is a no-op so
+every Source supports the call. Composite sources always recurse
+into wrapped sources. When the same child is reachable via several
+parents (e.g. modules shared across webpack chunks), pass a shared
+`visited` WeakSet so each subtree is walked at most once.
+Not safe to call concurrently with source/map/sourceAndMap/
+streamChunks/updateHash on the same instance.
+
 #### `isBuffer()`
 
 * Returns: {boolean}
@@ -406,6 +502,22 @@
 #### `buffers()`
 
 * Returns: {Buffer<ArrayBufferLike>[]}
+
+#### `clearCache([options][, visited])`
+
+* `options` {ClearCacheOptions}
+* `visited` {WeakSet<Source>}
+* Returns: {void}
+
+Release cached data held by this source. clearCache is a memory
+hint: it never affects correctness or output, only how expensive
+the next read is. Subclasses override; the base is a no-op so
+every Source supports the call. Composite sources always recurse
+into wrapped sources. When the same child is reachable via several
+parents (e.g. modules shared across webpack chunks), pass a shared
+`visited` WeakSet so each subtree is walked at most once.
+Not safe to call concurrently with source/map/sourceAndMap/
+streamChunks/updateHash on the same instance.
 
 #### `getName()`
 
@@ -490,6 +602,22 @@
 
 * Returns: {Buffer<ArrayBufferLike>[]}
 
+#### `clearCache([options][, visited])`
+
+* `options` {ClearCacheOptions}
+* `visited` {WeakSet<Source>}
+* Returns: {void}
+
+Release cached data held by this source. clearCache is a memory
+hint: it never affects correctness or output, only how expensive
+the next read is. Subclasses override; the base is a no-op so
+every Source supports the call. Composite sources always recurse
+into wrapped sources. When the same child is reachable via several
+parents (e.g. modules shared across webpack chunks), pass a shared
+`visited` WeakSet so each subtree is walked at most once.
+Not safe to call concurrently with source/map/sourceAndMap/
+streamChunks/updateHash on the same instance.
+
 #### `map([options])`
 
 * `options` {MapOptions}
@@ -545,6 +673,22 @@
 
 * Returns: {Buffer<ArrayBufferLike>[]}
 
+#### `clearCache([options][, visited])`
+
+* `options` {ClearCacheOptions}
+* `visited` {WeakSet<Source>}
+* Returns: {void}
+
+Release cached data held by this source. clearCache is a memory
+hint: it never affects correctness or output, only how expensive
+the next read is. Subclasses override; the base is a no-op so
+every Source supports the call. Composite sources always recurse
+into wrapped sources. When the same child is reachable via several
+parents (e.g. modules shared across webpack chunks), pass a shared
+`visited` WeakSet so each subtree is walked at most once.
+Not safe to call concurrently with source/map/sourceAndMap/
+streamChunks/updateHash on the same instance.
+
 #### `map([options])`
 
 * `options` {MapOptions}
@@ -597,6 +741,22 @@
 #### `buffers()`
 
 * Returns: {Buffer<ArrayBufferLike>[]}
+
+#### `clearCache([options][, visited])`
+
+* `options` {ClearCacheOptions}
+* `visited` {WeakSet<Source>}
+* Returns: {void}
+
+Release cached data held by this source. clearCache is a memory
+hint: it never affects correctness or output, only how expensive
+the next read is. Subclasses override; the base is a no-op so
+every Source supports the call. Composite sources always recurse
+into wrapped sources. When the same child is reachable via several
+parents (e.g. modules shared across webpack chunks), pass a shared
+`visited` WeakSet so each subtree is walked at most once.
+Not safe to call concurrently with source/map/sourceAndMap/
+streamChunks/updateHash on the same instance.
 
 #### `getArgsAsBuffers()`
 
