@@ -54,6 +54,12 @@
 
 ***
 
+## `compileWasm`
+
+> **compileWasm**: {"__webpack_require__.vs"}
+
+***
+
 ## `createFakeNamespaceObject`
 
 > **createFakeNamespaceObject**: {"__webpack_require__.t"}
@@ -75,12 +81,6 @@
 ## `cssInjectStyle`
 
 > **cssInjectStyle**: {"__webpack_require__.is"}
-
-***
-
-## `cssMergeStyleSheets`
-
-> **cssMergeStyleSheets**: {"__webpack_require__.mcs"}
 
 ***
 
@@ -423,6 +423,12 @@
 ## `scriptNonce`
 
 > **scriptNonce**: {"__webpack_require__.nc"}
+
+***
+
+## `setAnonymousDefaultName`
+
+> **setAnonymousDefaultName**: {"__webpack_require__.dn"}
 
 ***
 
