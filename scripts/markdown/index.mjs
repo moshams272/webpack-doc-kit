@@ -17,6 +17,7 @@ const generate = async packageDir => {
 
     plugin: [
       'typedoc-plugin-markdown',
+      'typedoc-plugin-frontmatter',
       'typedoc-plugin-missing-exports',
       './plugins/processor/index.mjs',
       './plugins/theme/index.mjs',
@@ -35,6 +36,9 @@ const generate = async packageDir => {
     modulesFileName: 'index',
     entryFileName: 'index',
     tsconfig: 'tsconfig.json',
+    frontmatterGlobals: {
+      layout: 'api',
+    },
     excludeExternals: true,
   });
 
