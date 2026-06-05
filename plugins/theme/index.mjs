@@ -13,8 +13,23 @@ export class DocKitThemeContext extends MarkdownThemeContext {
 
   partials = partials(this);
 
+  #originalReflection = this.templates.reflection;
+  #originalIndex = this.templates.index;
+
   templates = {
     ...this.templates,
+
+    reflection: page => {
+      const frontmatter = `---\nlayout: "api"\n---\n\n`;
+
+      return frontmatter + this.#originalReflection(page);
+    },
+
+    index: page => {
+      const frontmatter = `---\nlayout: "api"\n---\n\n`;
+
+      return frontmatter + this.#originalIndex(page);
+    },
   };
 }
 
