@@ -73,6 +73,51 @@ export default ctx => {
         .join('\n');
     },
 
+    signatures(model, options) {
+      const md = [];
+      const multipleSignatures =
+        model.signatures && model.signatures?.length > 1;
+
+      if (model.comment && multipleSignatures) {
+        md.push(
+          ctx.partials.comment(model.comment, {
+            headingLevel: options.headingLevel + 1,
+          })
+        );
+      }
+      if (multipleSignatures && model.documents) {
+        md.push(
+          ctx.partials.documents(model, {
+            headingLevel: options.headingLevel + 1,
+          })
+        );
+      }
+      model.signatures?.forEach(signature => {
+        if (multipleSignatures) {
+          md.push(
+            heading(
+              options.headingLevel + 1,
+              getMemberTitle(
+                model,
+                { local: isTypePage(ctx.page.model) },
+                signature
+              )
+            )
+          );
+        }
+        md.push(
+          ctx.partials.signature(signature, {
+            headingLevel: multipleSignatures
+              ? options.headingLevel + 2
+              : options.headingLevel + 1,
+            nested: options.nested,
+            multipleSignatures: false,
+          })
+        );
+      });
+      return md.join('\n\n');
+    },
+
     declaration(model, options) {
       const opts = { headingLevel: 2, nested: false, ...options };
       const signatures = callableSignatures(model);
@@ -260,14 +305,23 @@ export default ctx => {
         const multipleSignatures = model.signatures.length > 1;
         model.signatures.forEach(signature => {
           if (multipleSignatures) {
-            md.push(heading(options.headingLevel, i18n.kind_call_signature()));
+            md.push(
+              heading(
+                options.headingLevel,
+                getMemberTitle(
+                  model,
+                  { local: isTypePage(ctx.page.model) },
+                  signature
+                )
+              )
+            );
           }
           md.push(
             ctx.partials.signature(signature, {
               headingLevel: multipleSignatures
                 ? options.headingLevel + 1
                 : options.headingLevel,
-              multipleSignatures,
+              multipleSignatures: false,
             })
           );
         });
@@ -305,7 +359,12 @@ export default ctx => {
     },
 
     memberTitle: model =>
-      getMemberTitle(model, { local: isTypePage(ctx.page.model) }),
+      getMemberTitle(
+        model,
+        { local: isTypePage(ctx.page.model) },
+        null,
+        model.signatures?.length > 1
+      ),
     parametersList(parameters) {
       const flatList = [];
 
