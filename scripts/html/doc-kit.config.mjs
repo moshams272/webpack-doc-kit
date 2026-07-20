@@ -85,7 +85,7 @@ export default {
       '#theme/sponsors': join(ROOT, 'generated/sponsors.json'),
       '#theme/blog': join(ROOT, 'generated/blog.json'),
       '#theme/Layout': join(ROOT, 'components/Layout.jsx'),
-      '#theme/Navigation': join(ROOT, 'components/NavBar.jsx'),
+      '#theme/Navigation': join(ROOT, 'components/NavBar/index.jsx'),
       '#theme/Footer': join(ROOT, 'components/Footer/index.jsx'),
       '#theme/Logo': join(ROOT, 'components/Icons/Webpack.jsx'),
       '#theme/Home/Hero': join(ROOT, 'components/HomePage/Hero/index.jsx'),

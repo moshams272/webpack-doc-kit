@@ -1,7 +1,7 @@
 import Article from '@node-core/ui-components/Containers/Article';
 import BaseCrossLink from '@node-core/ui-components/Common/BaseCrossLink';
 
-import NavBar from '../../components/NavBar.jsx';
+import NavBar from '../../components/NavBar/index.jsx';
 import Footer from '../../components/Footer/index.jsx';
 import Byline from '../../components/Blog/Byline/index.jsx';
 import Cover from '../../components/Blog/Cover/index.jsx';

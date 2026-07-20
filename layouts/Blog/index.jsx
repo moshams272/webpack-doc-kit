@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import BasePagination from '@node-core/ui-components/Common/BasePagination';
 
-import NavBar from '../../components/NavBar.jsx';
+import NavBar from '../../components/NavBar/index.jsx';
 import Footer from '../../components/Footer/index.jsx';
 import CategoryFilter from '../../components/Blog/CategoryFilter/index.jsx';
 import PostCard from '../../components/Blog/PostCard/index.jsx';

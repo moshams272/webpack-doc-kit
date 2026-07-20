@@ -1,4 +1,4 @@
-import NavBar from '../../components/NavBar.jsx';
+import NavBar from '../../components/NavBar/index.jsx';
 import Footer from '../../components/Footer/index.jsx';
 import SideBar from '../../components/SideBar.jsx';
 
