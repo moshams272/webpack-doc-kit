@@ -11,6 +11,7 @@
     "build:html": "node scripts/html/index.mjs && node scripts/html/sitemap-index.mjs",
     "build:rss-feed": "node scripts/rss-feed/index.mjs",
     "build": "npm-run-all build:*",
+    "test": "node --test tests/**/*.test.mjs",
     "lint": "npm-run-all \"lint:!(fix)\"",
     "lint:fix": "npm-run-all lint:*:fix",
     "lint:js": "eslint .",
