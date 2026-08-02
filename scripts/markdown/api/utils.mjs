@@ -14,3 +14,27 @@ export const outputDir = join('pages', 'docs', 'api');
 
 export const getPackageFile = async (packageDir, file = 'package.json') =>
   JSON.parse(await readFile(join(packageDir, file), 'utf8'));
+
+export const getTypeDocConfig = () => ({
+  plugin: [
+    'typedoc-plugin-markdown',
+    'typedoc-plugin-missing-exports',
+    './plugins/processor/index.mjs',
+    './plugins/theme/index.mjs',
+  ],
+  theme: 'doc-kit',
+  router: 'doc-kit',
+
+  hideGroupHeadings: true,
+  hideBreadcrumbs: true,
+  hidePageHeader: true,
+  readme: 'none',
+  disableSources: true,
+  propertiesFormat: 'table',
+  membersWithOwnFile: ['Class'],
+
+  modulesFileName: 'index',
+  entryFileName: 'index',
+  tsconfig: 'tsconfig.json',
+  excludeExternals: true,
+});

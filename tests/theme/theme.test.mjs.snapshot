@@ -1,0 +1,3 @@
+exports[`TypeDoc Theme - Edge Cases Fixture 1`] = `
+"# Class: \`webpack.js.org.OverloadedTest\`\\n\\n## Constructors\\n\\n### \`new OverloadedTest()\`\\n\\n* Returns: {OverloadedTest}\\n\\n## Methods\\n\\n### \`overloadedMethod(name, count)\`\\n\\n#### Call Signature\\n\\n* \`name\` {string} A simple string parameter\\n* \`count\` {number} A simple number parameter\\n* Returns: {void} \\n\\nFirst overload signature.\\n\\n#### Call Signature\\n\\n* \`isEnabled\` {boolean} A simple boolean parameter\\n* Returns: {string} \\n\\nSecond overload signature.\\n\\n#### Call Signature\\n\\n* \`id\` {number} A simple string parameter\\n* \`isEnabled\` {boolean} A simple boolean parameter\\n* Returns: {void} \\n\\nThird overload signature.\\n"
+`;

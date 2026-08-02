@@ -1,72 +1,39 @@
-import { describe, it } from 'node:test';
-import assert from 'node:assert/strict';
+import { test } from 'node:test';
 import { Application } from 'typedoc';
-import {
-  readdirSync,
-  readFileSync,
-  writeFileSync,
-  existsSync,
-  rmSync,
-} from 'node:fs';
+import { readdirSync, readFileSync, rmSync } from 'node:fs';
 import { join } from 'node:path/posix';
+import { getTypeDocConfig } from '../../scripts/markdown/api/utils.mjs';
 
 const fixturesDir = './tests/theme/fixtures';
 const outputDir = './tests/theme/.temp';
 
-const testCases = readdirSync(fixturesDir, { withFileTypes: true })
-  .filter(dirent => dirent.isDirectory())
-  .map(dirent => dirent.name);
+test('TypeDoc Theme - Edge Cases Fixture', async t => {
+  const inputFilePath = join(fixturesDir, 'input.js');
 
-describe('TypeDoc Theme', () => {
-  for (const testCase of testCases) {
-    it(`should correctly render ${testCase}`, async () => {
-      const caseDir = join(fixturesDir, testCase);
-      const inputFilePath = join(caseDir, 'input.js');
-      const expectedFilePath = join(caseDir, 'expected.md');
+  const app = await Application.bootstrapWithPlugins({
+    ...getTypeDocConfig(),
+    entryPoints: [inputFilePath],
+    out: outputDir,
+    publicPath: '/',
+    tsconfig: join(fixturesDir, 'tsconfig.json'),
+  });
 
-      const app = await Application.bootstrapWithPlugins({
-        entryPoints: [inputFilePath],
-        out: outputDir,
-        plugin: [
-          'typedoc-plugin-markdown',
-          './plugins/processor/index.mjs',
-          './plugins/theme/index.mjs',
-        ],
-        theme: 'doc-kit',
-        router: 'doc-kit',
-        hideGroupHeadings: true,
-        hideBreadcrumbs: true,
-        hidePageHeader: true,
-        readme: 'none',
-        disableSources: true,
-        propertiesFormat: 'table',
-        membersWithOwnFile: ['Class'],
-        modulesFileName: 'index',
-        entryFileName: 'index',
-        tsconfig: join(fixturesDir, 'tsconfig.json'),
-      });
+  const project = await app.convert();
+  await app.generateOutputs(project);
 
-      const project = await app.convert();
-      await app.generateOutputs(project);
+  const mdFiles = readdirSync(outputDir, { recursive: true }).filter(
+    f => f.endsWith('.md') && !f.endsWith('index.md')
+  );
 
-      // With membersWithOwnFile: ['Class'] and the doc-kit router,
-      // Find the generated class markdown file dynamically
-      const mdFiles = readdirSync(outputDir, { recursive: true }).filter(
-        f => f.endsWith('.md') && !f.endsWith('index.md')
-      );
-      if (mdFiles.length === 0) throw new Error('No markdown file generated');
-      const actualMarkdown = readFileSync(join(outputDir, mdFiles[0]), 'utf-8');
+  if (mdFiles.length === 0) throw new Error('No markdown file generated');
 
-      // If UPDATE_SNAPSHOTS is set or expected.md does not exist, write the actual output to expected.md
-      if (!existsSync(expectedFilePath)) {
-        writeFileSync(expectedFilePath, actualMarkdown, 'utf-8');
-      }
+  mdFiles.sort();
 
-      const expectedMarkdown = readFileSync(expectedFilePath, 'utf-8');
+  const actualMarkdown = mdFiles
+    .map(f => readFileSync(join(outputDir, f), 'utf-8'))
+    .join('\n\n---\n\n');
 
-      rmSync(outputDir, { recursive: true, force: true });
+  rmSync(outputDir, { recursive: true, force: true });
 
-      assert.strictEqual(actualMarkdown, expectedMarkdown);
-    });
-  }
+  t.assert.snapshot(actualMarkdown);
 });

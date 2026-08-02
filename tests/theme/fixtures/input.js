@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-export class OverloadTest {
+export class OverloadedTest {
   /**
    * First overload signature.
    * @overload
