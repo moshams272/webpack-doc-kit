@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import { Application } from 'typedoc';
 import { readdirSync, readFileSync, rmSync } from 'node:fs';
 import { join } from 'node:path/posix';
-import { getTypeDocConfig } from '../../scripts/markdown/api/utils.mjs';
+import { typeDocConfig } from '../../scripts/markdown/api/utils.mjs';
 
 const fixturesDir = './tests/theme/fixtures';
 const outputDir = './tests/theme/.temp';
@@ -11,7 +11,7 @@ test('TypeDoc Theme - Edge Cases Fixture', async t => {
   const inputFilePath = join(fixturesDir, 'input.js');
 
   const app = await Application.bootstrapWithPlugins({
-    ...getTypeDocConfig(),
+    ...typeDocConfig,
     entryPoints: [inputFilePath],
     out: outputDir,
     publicPath: '/',

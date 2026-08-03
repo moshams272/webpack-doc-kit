@@ -15,7 +15,7 @@ export const outputDir = join('pages', 'docs', 'api');
 export const getPackageFile = async (packageDir, file = 'package.json') =>
   JSON.parse(await readFile(join(packageDir, file), 'utf8'));
 
-export const getTypeDocConfig = () => ({
+export const typeDocConfig = {
   plugin: [
     'typedoc-plugin-markdown',
     'typedoc-plugin-missing-exports',
@@ -37,4 +37,4 @@ export const getTypeDocConfig = () => ({
   entryFileName: 'index',
   tsconfig: 'tsconfig.json',
   excludeExternals: true,
-});
+};
