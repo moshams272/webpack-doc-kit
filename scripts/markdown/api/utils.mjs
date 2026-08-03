@@ -4,11 +4,13 @@ import { join } from 'node:path/posix';
 const [packageDir] = process.argv.slice(2);
 const cacheDir = join('.', '.cache', 'webpack');
 
-export const sources = packageDir
-  ? [packageDir]
-  : (await readdir(cacheDir, { withFileTypes: true }))
-      .filter(entry => entry.isDirectory())
-      .map(entry => join(cacheDir, entry.name));
+export const getSources = async () => {
+  if (packageDir) return [packageDir];
+  const sources = await readdir(cacheDir, { withFileTypes: true });
+  return sources
+    .filter(entry => entry.isDirectory())
+    .map(entry => join(cacheDir, entry.name));
+};
 
 export const outputDir = join('pages', 'docs', 'api');
 

@@ -1,7 +1,12 @@
 import { join } from 'node:path/posix';
 import { Application } from 'typedoc';
 import { major } from 'semver';
-import { sources, outputDir, getPackageFile, typeDocConfig } from './utils.mjs';
+import {
+  getSources,
+  outputDir,
+  getPackageFile,
+  typeDocConfig,
+} from './utils.mjs';
 
 const generate = async packageDir => {
   const { version } = await getPackageFile(packageDir);
@@ -17,6 +22,7 @@ const generate = async packageDir => {
   await app.generateOutputs(project);
 };
 
+const sources = await getSources();
 for (const source of sources) {
   await generate(source);
 }
