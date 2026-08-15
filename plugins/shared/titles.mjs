@@ -107,23 +107,16 @@ export const getMemberPrefix = model => {
   return prefix ? `${prefix}: ` : '';
 };
 
-export const getMemberTitle = (
-  model,
-  options,
-  specificSignature = null,
-  omitParams = false
-) => {
+export const getMemberTitle = (model, options, specificSignature = null) => {
   const prefix = getMemberPrefix(model);
   const name = escapeCode(memberName(model, options));
 
-  if (!omitParams) {
-    const params =
-      specificSignature?.parameters ??
-      model.parameters ??
-      callableSignatures(model)[0]?.parameters;
-    if (params) {
-      return `${prefix}\`${escapeCode(signatureExpression(model, params, name))}\``;
-    }
+  const params =
+    specificSignature?.parameters ??
+    model.parameters ??
+    callableSignatures(model)[0]?.parameters;
+  if (params) {
+    return `${prefix}\`${escapeCode(signatureExpression(model, params, name))}\``;
   }
 
   return `${prefix}\`${name}\``;

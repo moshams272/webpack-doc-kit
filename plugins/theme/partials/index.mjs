@@ -96,7 +96,7 @@ export default ctx => {
         if (multipleSignatures) {
           md.push(
             heading(
-              options.headingLevel + 1,
+              options.headingLevel,
               getMemberTitle(
                 model,
                 { local: isTypePage(ctx.page.model) },
@@ -108,8 +108,8 @@ export default ctx => {
         md.push(
           ctx.partials.signature(signature, {
             headingLevel: multipleSignatures
-              ? options.headingLevel + 2
-              : options.headingLevel + 1,
+              ? options.headingLevel + 1
+              : options.headingLevel,
             nested: options.nested,
             multipleSignatures: false,
           })
@@ -226,6 +226,31 @@ export default ctx => {
       });
     },
 
+    memberContainer(model, options) {
+      const md = [];
+
+      const isOverloadedMethod =
+        model.signatures &&
+        model.signatures.length > 1 &&
+        [ReflectionKind.Function, ReflectionKind.Method].includes(model.kind);
+
+      if (
+        !isOverloadedMethod &&
+        !ctx.router.hasOwnDocument(model) &&
+        model.kind !== ReflectionKind.Constructor
+      ) {
+        md.push(heading(options.headingLevel, ctx.partials.memberTitle(model)));
+      }
+
+      md.push(
+        ctx.partials.member(model, {
+          headingLevel: options.headingLevel,
+          nested: options.nested,
+        })
+      );
+      return md.join('\n\n');
+    },
+
     memberWithGroups(model, options) {
       const md = [];
       const stability = ctx.helpers.stabilityBlockquote(model.comment);
@@ -321,7 +346,7 @@ export default ctx => {
               headingLevel: multipleSignatures
                 ? options.headingLevel + 1
                 : options.headingLevel,
-              multipleSignatures: false,
+              multipleSignatures,
             })
           );
         });
@@ -359,12 +384,7 @@ export default ctx => {
     },
 
     memberTitle: model =>
-      getMemberTitle(
-        model,
-        { local: isTypePage(ctx.page.model) },
-        null,
-        model.signatures?.length > 1
-      ),
+      getMemberTitle(model, { local: isTypePage(ctx.page.model) }),
     parametersList(parameters) {
       const flatList = [];
 
