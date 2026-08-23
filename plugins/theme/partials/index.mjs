@@ -78,20 +78,6 @@ export default ctx => {
       const multipleSignatures =
         model.signatures && model.signatures?.length > 1;
 
-      if (model.comment && multipleSignatures) {
-        md.push(
-          ctx.partials.comment(model.comment, {
-            headingLevel: options.headingLevel + 1,
-          })
-        );
-      }
-      if (multipleSignatures && model.documents) {
-        md.push(
-          ctx.partials.documents(model, {
-            headingLevel: options.headingLevel + 1,
-          })
-        );
-      }
       model.signatures?.forEach(signature => {
         if (multipleSignatures) {
           md.push(
