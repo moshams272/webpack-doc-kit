@@ -119,22 +119,20 @@ Class demonstrating overload signatures.
 
 ### \`overloadMethod(name, count)\`
 
-#### Call Signature
-
 * \`name\` {string} A simple string parameter
 * \`count\` {number} A simple number parameter
 * Returns: {void} 
 
 First overload signature.
 
-#### Call Signature
+### \`overloadMethod(isEnabled)\`
 
 * \`isEnabled\` {boolean} A simple boolean parameter
 * Returns: {string} 
 
 Second overload signature.
 
-#### Call Signature
+### \`overloadMethod(id, isEnabled)\`
 
 * \`id\` {number} A simple string parameter
 * \`isEnabled\` {boolean} A simple boolean parameter
